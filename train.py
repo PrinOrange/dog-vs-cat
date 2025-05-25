@@ -8,10 +8,13 @@ import os
 load_dotenv()
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-# 全局配置
+# Hyper Parameter 配置
 BATCH_SIZE = 32
 IMG_SIZE = (150, 150)
 TRAIN_DATASET = os.getenv("TRAIN_DATASET")
+EPOCHS = 8
+OPTIMIZER = 'adam'
+LOSS_FUNC = 'binary_crossentropy'
 
 # 数据预处理
 def load_data():
@@ -56,8 +59,8 @@ def build_model():
         tf.keras.layers.Dense(1, activation='sigmoid')
     ])
     
-    model.compile(optimizer='adam',
-                  loss='binary_crossentropy',
+    model.compile(optimizer=OPTIMIZER,
+                  loss=LOSS_FUNC,
                   metrics=['accuracy'])
     
     return model
@@ -69,12 +72,12 @@ def main():
     
     history = model.fit(
         train_data,
-        epochs=10,
+        epochs = EPOCHS,
         validation_data=val_data
     )
     
     # 保存模型
-    model.save("cat_dog_model.h5")
+    model.save("cat_dog_model-v2.h5")
 
     # 可视化训练过程
     acc = history.history['accuracy']
