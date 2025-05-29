@@ -10,7 +10,7 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 # Hyper Parameter 配置
 BATCH_SIZE = 32
-IMG_SIZE = (150, 150)
+IMG_SIZE = (224, 224)
 TRAIN_DATASET = os.getenv("TRAIN_DATASET")
 EPOCHS = 8
 OPTIMIZER = 'adam'
