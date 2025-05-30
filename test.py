@@ -17,7 +17,15 @@ def predict(img_path):
     x = image.img_to_array(img) / 255.0
     x = np.expand_dims(x, axis=0)
     pred = model.predict(x)[0][0]
-    return ["dog" if pred > 0.5 else "cat", pred]
+
+    if pred < 0.3:
+        label = "cat"
+    elif pred > 0.7:
+        label = "dog"
+    else:
+        label = "uncertain animal"
+
+    return [label, pred]
 
 # 遍历目录下所有图片文件
 for fname in os.listdir(input_dir):
