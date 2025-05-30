@@ -3,10 +3,8 @@ import os
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-import os
 
 load_dotenv()
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 # Hyper Parameter 配置
 BATCH_SIZE = 32

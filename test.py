@@ -3,9 +3,6 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 import os
 
-# 避免 OpenMP 重复初始化错误
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-
 # 加载模型
 model = load_model("cat_dog_model.h5")
 
